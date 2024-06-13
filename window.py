@@ -1,7 +1,6 @@
 from tkinter import Tk, BOTH, Canvas
 
-from cell import HexCell
-from config import Color, BLACK
+from config import Color
 from geometry import Line
 
 class Window:
@@ -30,10 +29,6 @@ class Window:
         self.__running = False
         return
     
-    def draw_line(self, line: Line, fill_color: Color = BLACK) -> None:
+    def draw_line(self, line: Line, fill_color: Color) -> None:
         line.draw(self.__canvas, fill_color)
-        return
-
-    def draw_cell(self, cell: HexCell, fill_color: Color = BLACK) -> None:
-        cell.draw(self.__canvas, fill_color)
         return
