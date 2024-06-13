@@ -1,4 +1,5 @@
 from tkinter import Canvas
+from typing import Self
 
 from config import Color
 
@@ -8,6 +9,9 @@ class Point:
         self.x = x
         self.y = y
         return
+    
+    def __add__(self, other: Self) -> Self:
+        return Point(self.x + other.x, self.y + other.y)
 
 class Line:
 
