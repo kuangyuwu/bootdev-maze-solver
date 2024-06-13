@@ -1,0 +1,2 @@
+Color = str
+BLACK = "black"
