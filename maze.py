@@ -7,14 +7,15 @@ from window import Window
 
 class Maze:
 
-    def __init__(self, num_rows: int, num_columns: int, side_len: float, win: Window) -> None:
+    def __init__(self, num_rows: int, num_columns: int, side_len: float, win: Window = None) -> None:
         self.__num_rows: int = num_rows
         self.__num_columns: int = num_columns
         self.__side_len: float = side_len
         self.__win: Window = win
         self._cells: list[list[HexCell]] = []
         self._create_cells()
-        self._draw_cells()
+        if self.__win is not None:
+            self._draw_cells()
         return
 
     def _create_cells(self) -> None:
