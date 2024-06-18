@@ -14,7 +14,7 @@ def main():
     cell3 = HexCell(Point(500, 100), 20.0, win)
     cell3.draw()
     cell.draw_move(cell3, True)
-    maze = Maze(10, 10, 15, win) 
+    maze = Maze(8, 8, 20, win, 0) 
     win.wait_for_close()
 
 if __name__ == "__main__":
