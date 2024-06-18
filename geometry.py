@@ -13,6 +13,8 @@ class Point:
     def __add__(self, other: Self) -> Self:
         return Point(self.x + other.x, self.y + other.y)
 
+Vector = Point
+
 class Line:
 
     def __init__(self, start: Point, end: Point) -> None:
