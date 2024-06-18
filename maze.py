@@ -56,7 +56,7 @@ class Maze:
                 self.__animate(0)
         return
     
-    def __animate(self, time: float = 0.02) -> None:
+    def __animate(self, time: float = 0.05) -> None:
         self.__win.redraw()
         sleep(time)
         return
