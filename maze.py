@@ -35,7 +35,7 @@ class Maze:
         def create_cell(center: Point) -> HexCell:
             return HexCell(center, self.__side_len, self.__win)
 
-        first_center: Point = Point(30.0, 30.0)
+        first_center: Point = self.__find_first_center()
         move_along_row_even: Vector = Point(self.__side_len * 1.5, self.__side_len * 0.5 * sqrt(3))
         move_along_row_odd: Vector = Point(self.__side_len * 1.5, -self.__side_len * 0.5 * sqrt(3))
         move_along_column: Vector = Point(0, self.__side_len * sqrt(3))
@@ -48,6 +48,18 @@ class Maze:
                 center += move_along_row_even if j % 2 == 0 else move_along_row_odd
             first_center_of_row += move_along_column
         return
+    
+    def __find_first_center(self) -> Point:
+        total_width: float = self.__side_len * (3 * self.__num_columns + 1) / 2
+        total_height: float = self.__side_len * sqrt(3) * (2 * self.__num_rows + 1) / 2
+        if total_width >= self.__win.width:
+            raise ValueError("Invalid maze: too many columns")
+        if total_height >= self.__win.height:
+            raise ValueError("Invalid maze: too many rows")
+        return Point(
+            (self.__win.width - total_width) / 2 + self.__side_len,
+            (self.__win.height - total_height) / 2 + self.__side_len * sqrt(3) / 2
+        )
     
     def __draw_cells(self) -> None:
         for row in self.cells:
@@ -126,7 +138,8 @@ class Maze:
         directions = self.__get_possible_directions(i, j, solving=True)
         done: bool = False
         if len(directions) > 0:
-            di, dj, k = directions[random.randrange(len(directions))]
+            directions.sort(key=lambda t: t[0] + t[1], reverse=True)
+            di, dj, _ = directions[0]
             ip: int = i + di
             jp: int = j + dj
             self.cells[i][j].draw_move(self.cells[ip][jp])
