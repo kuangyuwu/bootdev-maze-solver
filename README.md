@@ -1,8 +1,10 @@
 # Maze Solver
 
+## Demo
 
 https://github.com/kuangyuwu/maze-solver-bootdev/assets/163365177/940ead47-8d03-49bb-99b7-94213f788095
 
+## Description
 
 This is the third guided project on [boot.dev](https://www.boot.dev/) with **two twists**.
 1. The cells are hexagons instead of squares.
